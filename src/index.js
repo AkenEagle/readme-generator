@@ -21,9 +21,9 @@ const createReadmeText = (answers) => {
 const writeToFile = (path, data) => {
   try {
     fs.writeFileSync(path, data);
-    console.log(`${path} has been created successfully.`);
+    console.info(`${path} has been created successfully.`);
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 
@@ -33,7 +33,7 @@ const init = async () => {
   // Generate readme text
   const readmeText = createReadmeText(answers);
   // Create readme
-  writeToFile("generated-readme.md", readmeText);
+  writeToFile("GENERATED_README.md", readmeText);
 };
 
 init();

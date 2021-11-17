@@ -4,8 +4,8 @@
   "description": "With this tool you can generate a high quality readme for your project.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
