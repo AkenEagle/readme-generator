@@ -10,12 +10,21 @@ const questions = [
   },
 ];
 
-const createTitleText = (title) => {
-  return `# ${title}`;
+const createTitleText = (answers) => {
+  return `# ${answers.title}`;
 };
 
 const createReadmeText = (answers) => {
-  return `${createTitleText(answers.title)}`;
+  return `${createTitleText(answers)}`;
+};
+
+const writeToFile = (path, data) => {
+  try {
+    fs.writeFileSync(path, data);
+    console.log(`${path} has been created successfully.`);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const init = async () => {
@@ -24,10 +33,7 @@ const init = async () => {
   // Generate readme text
   const readmeText = createReadmeText(answers);
   // Create readme
-  fs.writeFile("generated-readme.md", `${readmeText}`, (err) => {
-    if (err) throw err;
-    console.log("Your readme has been generated succesfully.");
-  });
+  writeToFile("generated-readme.md", readmeText);
 };
 
 init();
