@@ -6,6 +6,54 @@ const createDescriptionText = (answers) => {
   return `${answers.description}`;
 };
 
+const createInstallationText = (answers) => {
+  return `## Installation
+  
+Run the following script to install the packages required for the application:
+      
+\`\`\`
+${answers.installationText}
+\`\`\``;
+};
+
+const createUsageText = (answers) => {
+  return `## Usage
+  
+To use the application run the following script:
+      
+\`\`\`
+${answers.usage}
+\`\`\``;
+};
+
+const createTestText = (answers) => {
+  return `## Usage
+    
+To test the application:
+        
+\`\`\`
+${answers.test}
+\`\`\``;
+};
+
+const createContributingText = (answers) => {
+  return `## Contributing
+  
+${answers.contributing}`;
+};
+
+const createLicenseText = (answers) => {
+  return `## License
+  
+${answers.license}`;
+};
+
+const createUsernameText = (answers) => {
+  return `## GitHub Username
+    
+${answers.github}`;
+};
+
 const createReadmeText = (answers) => {
   return `# ${createTitleText(
     answers
@@ -24,29 +72,17 @@ const createReadmeText = (answers) => {
   
 ${createDescriptionText(answers)}
   
-## Installation
+${answers.installation ? createInstallationText(answers) : ""}
+
+${answers.installation ? createTestText(answers) : ""}
+
+${answers.installation ? createUsageText(answers) : ""}
   
-Run the following script to install the packages required for the application:
+${createContributingText(answers)}
   
-\`\`\`
-ADD TEXT HERE
-\`\`\`
-  
-## Usage
-  
-To use the application run the following script:
-  
-\`\`\`
-ADD TEXT HERE
-\`\`\`
-  
-## Contributing
-  
-ADD TEXT HERE
-  
-## License
-  
-ADD TEXT HERE`;
+${createLicenseText(answers)}
+
+${createUsernameText(answers)}`;
 };
 
 module.exports = createReadmeText;
