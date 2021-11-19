@@ -1,31 +1,7 @@
 const inquirer = require("inquirer");
-const fs = require("fs");
-
-const questions = [
-  // Title
-  {
-    name: "title",
-    message: "What's the title of your project?",
-    type: "input",
-  },
-];
-
-const createTitleText = (answers) => {
-  return `# ${answers.title}`;
-};
-
-const createReadmeText = (answers) => {
-  return `${createTitleText(answers)}`;
-};
-
-const writeToFile = (path, data) => {
-  try {
-    fs.writeFileSync(path, data);
-    console.info(`${path} has been created successfully.`);
-  } catch (err) {
-    console.error(err);
-  }
-};
+const createReadmeText = require("./createReadme");
+const writeToFile = require("./util");
+const questions = require("./questions");
 
 const init = async () => {
   // Prompt questions
