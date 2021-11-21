@@ -1,9 +1,13 @@
+// Create individual title and description texts
+
 const createTitleText = (answers) => {
-  return `${answers.title}`;
+  return `# ${answers.title} ![${answers.license}](https://img.shields.io/static/v1?label=${answers.license}&message=License&color=green)`;
 };
 
 const createDescriptionText = (answers) => {
-  return `${answers.description}`;
+  return `## Description
+
+${answers.description}`;
 };
 
 const createInstallationText = (answers) => {
@@ -27,7 +31,7 @@ ${answers.usage}
 };
 
 const createTestText = (answers) => {
-  return `## Usage
+  return `## Testing
     
 To test the application:
         
@@ -38,8 +42,12 @@ ${answers.test}
 
 const createContributingText = (answers) => {
   return `## Contributing
-  
-${answers.contributing}`;
+
+To contribute the project:
+
+\`\`\`
+${answers.contributing}
+\`\`\``;
 };
 
 const createLicenseText = (answers) => {
@@ -48,27 +56,40 @@ const createLicenseText = (answers) => {
 ${answers.license}`;
 };
 
-const createUsernameText = (answers) => {
-  return `## GitHub Username
-    
-${answers.github}`;
+const createScreenshotText = (answers) => {
+  return `## Preview
+
+![preview](${answers.screenshot})`;
 };
 
-const createReadmeText = (answers) => {
-  return `# ${createTitleText(
-    answers
-  )} ![MIT](https://img.shields.io/static/v1?label=MIT&message=License&color=green)
+const createQuestionsText = (answers) => {
+  return `## Questions
+    
+GitHub: [${answers.github}](https://github.com/${answers.github})\\
+Email: ${answers.email}`;
+};
 
-## Table of Contents
+const createTableOfContents = (answers) => {
+  return `## Table of Contents
   
   - [Description](#description)${
-    answers.installation ? "\n  - [Installation](#installation)" : ""
+    answers.installation
+      ? "\n- [Installation](#installation)\n- [Usage](#usage)\n- [Testing](#testing)\\"
+      : ""
   }
-  - [Usage](#usage)
-  - [Contributing](#contributing)
   - [License](#license)
-  
-## Description
+  - [Contact](#contact)
+  - [Contributing](#contributing)${
+    answers.hasScreenshot ? "\n- [Preview](#preview)" : ""
+  }`;
+};
+
+// Create the readme text
+
+const createReadmeText = (answers) => {
+  return `${createTitleText(answers)}
+
+${createTableOfContents(answers)}
   
 ${createDescriptionText(answers)}
   
@@ -82,7 +103,9 @@ ${createContributingText(answers)}
   
 ${createLicenseText(answers)}
 
-${createUsernameText(answers)}`;
+${createQuestionsText(answers)}
+
+${answers.hasScreenshot ? createScreenshotText(answers) : ""}`;
 };
 
 module.exports = createReadmeText;
