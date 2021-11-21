@@ -74,12 +74,12 @@ const createTableOfContents = (answers) => {
   
   - [Description](#description)${
     answers.installation
-      ? "\n- [Installation](#installation)\n- [Usage](#usage)\n- [Testing](#testing)\\"
+      ? "\n- [Installation](#installation)\n- [Usage](#usage)\n- [Testing](#testing)\n"
       : ""
   }
-  - [License](#license)
-  - [Contact](#contact)
-  - [Contributing](#contributing)${
+- [License](#license)
+- [Contact](#contact)
+- [Contributing](#contributing)${
     answers.hasScreenshot ? "\n- [Preview](#preview)" : ""
   }`;
 };
